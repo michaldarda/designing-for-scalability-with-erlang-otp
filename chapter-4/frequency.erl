@@ -26,6 +26,7 @@ handle_cast(stop, Frequencies) ->
     {stop, normal, Frequencies}.
 
 handle_info(_Msg, Frequencies) ->
+    io:format("Received unexpected message"),
     {noreply, Frequencies}.
 
 terminate(_Reason, _Frequencies) ->
