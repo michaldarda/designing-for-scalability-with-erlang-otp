@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+
+echo "spawn $1" > temp.expect
+
+for i in `cat $2`; do
+	echo "send $(printf %q $i)\\n" >> temp.expect
+done
+
+echo "interact" >> temp.expect
+
+expect -f temp.expect
