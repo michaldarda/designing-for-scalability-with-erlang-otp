@@ -11,22 +11,22 @@ start() -> gen_server:start_link({local, frequency}, frequency, [], []).
 
 init(_Args) ->
 	Frequencies = {get_frequencies(), []},
-  {ok, Frequencies}.
+    {ok, Frequencies}.
 
 get_frequencies() -> [10,11,12,13,14,15].
 
 handle_call({allocate, Pid}, _From, Frequencies) ->
 	{NewFrequencies, Reply} = allocate(Frequencies, Pid),
-  {reply, Reply, NewFrequencies}.
+    {reply, Reply, NewFrequencies}.
 
 handle_cast({deallocate, Freq}, Frequencies) ->
 	NewFrequencies = deallocate(Frequencies, Freq),
-  {noreply, NewFrequencies};
+    {noreply, NewFrequencies};
 handle_cast(stop, Frequencies) ->
-  {stop, normal, Frequencies}.
+    {stop, normal, Frequencies}.
 
 handle_info(_Msg, Frequencies) ->
-  {noreply, Frequencies}.
+    {noreply, Frequencies}.
 
 terminate(_Reason, _Frequencies) ->
 	ok.
