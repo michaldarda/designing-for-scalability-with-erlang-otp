@@ -1,0 +1,18 @@
+sys:trace(Name,TraceFlag [,Timeout]) -> ok
+
+sys:log(Name,LogFlag [,Timeout]) -> ok | {ok, EventList}
+sys:log_to_file(Name,FileFlag [,Timeout]) -> ok | {error, open_file}
+
+sys:install(Name,{Func,FuncState} [,Timeout]) -> ok
+sys:remove(Name,Func [,Timeout])
+
+sys:statistics(Name,Flag [,Timeout]) -> ok | {ok, Statistics}.
+
+sys:get_status(Name [,Timeout]) -> {status, Pid, {module, Mod}, Status}
+
+sys:get_state(Name [,Timeout]) -> State
+
+sys:replace_state(Name,ReplaceFun [,Timeout]) -> State
+
+sys:suspend(Name [,Timeout]) -> ok
+sys:resume(Name [,Timeout]) -> ok
